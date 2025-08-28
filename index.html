@@ -8,7 +8,6 @@
 <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;700&display=swap" rel="stylesheet">
 
 <style>
-
 @font-face {
   font-family: 'Brush 445';
   src: url('fonts/brush-445.woff2') format('woff2'),
@@ -34,16 +33,34 @@ header h1 { font-size: 200px; margin:0; }
 header p { font-family: 'Poppins', sans-serif; font-weight: 700; font-size: 48px; color: #555; margin:0; }
 
 .carousel { padding: 40px 0 70px 0; overflow: hidden; display: flex; justify-content: center; position: relative; }
-.carousel-track-container { width: 90%; height: 350px; overflow: visible; }
+
+.carousel-track-container { 
+  width: 90%; 
+  overflow: hidden; 
+  position: relative; 
+}
+
+.carousel-track-container::before,
+.carousel-track-container::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  height: 100%;
+  width: 50px;
+  z-index: 10;
+  pointer-events: none;
+}
+
+.carousel-track-container::before { left:0; background: linear-gradient(to right, #fafafa 0%, transparent 100%); }
+.carousel-track-container::after  { right:0; background: linear-gradient(to left, #fafafa 0%, transparent 100%); }
+
 .carousel-track { display: flex; transition: transform .6s cubic-bezier(0.65, 0, 0.35, 1); list-style: none; padding: 0; margin: 0; gap: 10px; }
-.carousel-slide { flex: 0 0 20%; box-sizing: border-box; height: 100%; }
-.carousel-slide img { width: 100%; height: 350px; aspect-ratio: 16/10; object-fit: cover; display: block; margin: 0 auto; border-radius: 12px; box-shadow: 0 2px 12px rgba(0,0,0,0.1); }
+.carousel-slide { flex: 0 0 20%; box-sizing: border-box; }
+.carousel-slide img { width: 100%; max-width: 300px; height: auto; aspect-ratio: 3/4; object-fit: cover; display: block; margin: 0 auto; border-radius: 12px; box-shadow: 0 2px 12px rgba(0,0,0,0.1); }
 
 .carousel-btn {
   position: absolute;
   top: 50%;
-  left: auto;
-  right: auto;
   transform: translateY(-50%);
   background: #222;
   color: white;
@@ -67,18 +84,14 @@ header p { font-family: 'Poppins', sans-serif; font-weight: 700; font-size: 48px
   transform: translateY(-50%) scale(1.05);
 }
 
-.carousel-btn.prev {
-  left: 20px;
-}
-
-.carousel-btn.next {
-  right: 20px;
-}
-
+.carousel-btn.prev { left: 20px; }
+.carousel-btn.next { right: 20px; }
 
 .socials { padding: 40px 0 0 0; display: flex; justify-content: center; gap: 50px; }
 .socials a img { transition: transform 0.2s; }
 .socials a:hover img { transform: scale(1.1); }
+
+p.updates { font-family: 'Poppins', sans-serif; font-size: 30px; color: #555; margin-top: 15px; }
 
 .map { width: 100%; height: 700px; margin: 0; padding: 20px; box-sizing: border-box; display: flex; flex-direction: column; align-items: flex-start; justify-content: flex-start; }
 .map h2 { font-weight: 700; font-size: 28px; color: #fff; background-color: #222; display: inline-block; padding: 10px 20px; border-radius: 5px; margin-bottom: 15px; }
@@ -90,68 +103,14 @@ footer { background: #222; color: #fff; padding: 40px 20px; font-size: 14px; }
 .footer-section p { margin: 2px 0; }
 .footer-section p.italic { font-style: italic; color: #bbb; }
 
-.carousel::before,
-.carousel::after {
-  content: "";
-  position: absolute;
-  top: 0;
-  width: 170px;
-  height: 100%;
-  z-index: 10;
-  pointer-events: none;
-}
-
-.carousel::before {
-  left: 0px;
-  background: linear-gradient(to right, #fafafa 40%, transparent);
-}
-
-.carousel::after {
-  right: 0px;
-  background: linear-gradient(to left, #fafafa 40%, transparent);
-}
-
-@media (max-width: 1200px) {
-  header h1 { font-size: 150px; }
-  header p { font-size: 36px; }
-}
-
 @media (max-width: 768px) {
-  header { height: auto; padding: 40px 0; }
-  header h1 { font-size: 100px; }
-  header p { font-size: 28px; }
-
-  .carousel-track-container { width: 95%; }
-  .carousel-slide { flex: 0 0 50%; } /* 2 slide'y w poziomie */
-  .carousel-slide img { height: 200px; }
-
-  .carousel-btn {
-    width: 50px;
-    height: 50px;
-    font-size: 30px;
-  }
-  .carousel-btn.prev { left: 10px; }
-  .carousel-btn.next { right: 10px; }
-
-  .socials a img { width: 80px; }
-  p { font-size: 20px; }
-}
-
-@media (max-width: 480px) {
-  .carousel-slide { flex: 0 0 80%; } /* 1 slide w poziomie */
-  .carousel-slide img { height: 180px; }
-
-  header h1 { font-size: 60px; }
-  header p { font-size: 20px; }
-
-  .socials { gap: 20px; }
-  .socials a img { width: 60px; }
-
-  .carousel-btn {
-    width: 40px;
-    height: 40px;
-    font-size: 24px;
-  }
+  .carousel-slide { flex: 0 0 80%; }
+  .carousel-slide img { max-width: 90vw; height: auto; }
+  .carousel-btn { width: 40px; height: 40px; font-size: 24px; }
+  .carousel-track-container::before,
+  .carousel-track-container::after { width: 30px; }
+  p.updates { font-size: 18px; }
+  .socials a img { width: 100px; }
 }
 
 </style>
@@ -187,8 +146,9 @@ footer { background: #222; color: #fff; padding: 40px 20px; font-size: 14px; }
   <a href="https://www.instagram.com/relax.skarpety/"><img src="icons/instagram.svg" alt="Instagram" width="150"></a>
 </section>
 
-<p style="font-family: 'Poppins', sans-serif; font-size: 30px; color: #555; margin-top: 15px;">
-  Najnowsze aktualizacje naszych produktów dostępne na <a href="https://www.facebook.com/RelaxSkarpety" target="_blank" style="color:#1877F2; text-decoration: none;">Facebook</a>.
+<p class="updates">
+  Najnowsze aktualizacje naszych produktów dostępne na 
+  <a href="https://www.facebook.com/RelaxSkarpety" target="_blank" style="color:#1877F2; text-decoration: none;">Facebook</a>.
 </p>
 
 <section class="map">
