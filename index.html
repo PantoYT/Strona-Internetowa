@@ -103,16 +103,6 @@ footer { background: #222; color: #fff; padding: 40px 20px; font-size: 14px; }
 .footer-section p { margin: 2px 0; }
 .footer-section p.italic { font-style: italic; color: #bbb; }
 
-@media (max-width: 768px) {
-  .carousel-slide { flex: 0 0 80%; }
-  .carousel-slide img { max-width: 90vw; height: auto; }
-  .carousel-btn { width: 40px; height: 40px; font-size: 24px; }
-  .carousel-track-container::before,
-  .carousel-track-container::after { width: 30px; }
-  p.updates { font-size: 18px; }
-  .socials a img { width: 100px; }
-}
-
 .about {
   background: #fafafa;
   padding: 60px 20px;
@@ -140,38 +130,30 @@ footer { background: #222; color: #fff; padding: 40px 20px; font-size: 14px; }
   line-height: 1.6;
 }
 
+/* --- MOBILE --- */
 @media (max-width: 768px) {
-
-  .socials + p {
-    font-size: 16px;
-  }
-
-  .carousel-track-container {
+  /* Karuzela ukryta, w tle statyczne skarpety */
+  .carousel { display: none; }
+  .carousel-mobile {
+    display: block;
     height: 700px;
-  }
-  .carousel-slide img {
-    height: 700px;
-    object-fit: cover;
-  }
-
-  header h1 {
-    font-size: 120px;
-  }
-  header p {
-    font-size: 24px;
+    background: url('images/skarpetki-bg.jpg') center/cover no-repeat;
+    border-radius: 12px;
+    margin: 20px 5%;
   }
 
-  .carousel-btn {
-    width: 60px;
-    height: 60px;
-    font-size: 40px;
-  }
+  .carousel-slide { flex: 0 0 80%; }
+  .carousel-slide img { max-width: 90vw; height: auto; }
+  .carousel-btn { width: 40px; height: 40px; font-size: 24px; }
+  .carousel-track-container::before,
+  .carousel-track-container::after { width: 30px; }
+  p.updates { font-size: 16px; }
+  .socials a img { width: 100px; }
 
-  .socials a img {
-    width: 100px;
-  }
+  header h1 { font-size: 120px; }
+  header p { font-size: 24px; }
+  .carousel-btn { width: 60px; height: 60px; font-size: 40px; }
 }
-
 </style>
 </head>
 <body>
@@ -181,6 +163,7 @@ footer { background: #222; color: #fff; padding: 40px 20px; font-size: 14px; }
   <p>• Producent Skarpet i Rajstop •</p>
 </header>
 
+<!-- Karuzela PC -->
 <section class="carousel">
   <button class="carousel-btn prev">❮</button>
   <div class="carousel-track-container">
@@ -199,6 +182,9 @@ footer { background: #222; color: #fff; padding: 40px 20px; font-size: 14px; }
   </div>
   <button class="carousel-btn next">❯</button>
 </section>
+
+<!-- Tło na mobile -->
+<section class="carousel-mobile"></section>
 
 <section class="socials">
   <a href="https://www.facebook.com/RelaxSkarpety?locale=pl_PL"><img src="icons/facebook.svg" alt="Facebook" width="150"></a>
@@ -244,11 +230,11 @@ footer { background: #222; color: #fff; padding: 40px 20px; font-size: 14px; }
 </footer>
 
 <script>
+// PC karuzela
 const track = document.querySelector('.carousel-track');
 const prevButton = document.querySelector('.prev');
 const nextButton = document.querySelector('.next');
 const carouselSection = document.querySelector('.carousel');
-
 const slides = Array.from(track.children);
 
 function getSlideWidth() {
@@ -264,10 +250,8 @@ function moveNext() {
   if (isMoving) return;
   isMoving = true;
   const slideWidth = getSlideWidth();
-
   track.style.transition = 'transform 0.6s cubic-bezier(0.65,0,0.35,1)';
   track.style.transform = `translateX(-${slideWidth}px)`;
-
   track.addEventListener('transitionend', () => {
     track.appendChild(track.firstElementChild);
     track.style.transition = 'none';
@@ -280,16 +264,13 @@ function movePrev() {
   if (isMoving) return;
   isMoving = true;
   const slideWidth = getSlideWidth();
-
   track.insertBefore(track.lastElementChild, track.firstElementChild);
   track.style.transition = 'none';
   track.style.transform = `translateX(-${slideWidth}px)`;
-
   requestAnimationFrame(() => {
     track.style.transition = 'transform 0.6s cubic-bezier(0.65,0,0.35,1)';
     track.style.transform = 'translateX(0)';
   });
-
   track.addEventListener('transitionend', () => { isMoving = false; }, { once: true });
 }
 
@@ -302,20 +283,15 @@ prevButton.addEventListener('click', () => { movePrev(); startAuto(); });
 
 carouselSection.addEventListener('mouseenter', stopAuto);
 carouselSection.addEventListener('mouseleave', startAuto);
-
 startAuto();
-</script>
 
-<script>
+// Kopiowanie email
 const emailElement = document.getElementById('email');
-
 emailElement.addEventListener('click', () => {
   const email = "relaxskarpety@interia.pl";
   navigator.clipboard.writeText(email).then(() => {
     alert("Adres e-mail skopiowany do schowka!");
-  }).catch(err => {
-    console.error("Nie udało się skopiować:", err);
-  });
+  }).catch(err => { console.error("Nie udało się skopiować:", err); });
 });
 </script>
 
