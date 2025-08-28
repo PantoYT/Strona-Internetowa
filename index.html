@@ -113,6 +113,65 @@ footer { background: #222; color: #fff; padding: 40px 20px; font-size: 14px; }
   .socials a img { width: 100px; }
 }
 
+.about {
+  background: #fafafa;
+  padding: 60px 20px;
+  border-top: 1px solid #ccc;
+  border-bottom: 1px solid #ccc;
+}
+
+.about-container {
+  max-width: 800px;
+  margin: 0 auto;
+  text-align: justify;
+}
+
+.about h2 {
+  font-size: 36px;
+  text-align: center;
+  margin-bottom: 20px;
+  color: #222;
+}
+
+.about p {
+  font-family: 'Poppins', sans-serif;
+  font-size: 18px;
+  color: #555;
+  line-height: 1.6;
+}
+
+@media (max-width: 768px) {
+
+  .socials + p {
+    font-size: 16px;
+  }
+
+  .carousel-track-container {
+    height: 700px;
+  }
+  .carousel-slide img {
+    height: 700px;
+    object-fit: cover;
+  }
+
+  header h1 {
+    font-size: 120px;
+  }
+  header p {
+    font-size: 24px;
+  }
+
+  .carousel-btn {
+    width: 60px;
+    height: 60px;
+    font-size: 40px;
+  }
+
+  .socials a img {
+    width: 100px;
+  }
+}
+
 </style>
 </head>
 <body>
@@ -156,12 +215,24 @@ footer { background: #222; color: #fff; padding: 40px 20px; font-size: 14px; }
   <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d635.1364904721734!2d23.420009128585807!3d50.449557298217066!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x4724a627021b38a1%3A0xcf8136404e17eef4!2srelax%20skarpety!5e0!3m2!1spl!2spl!4v1756070618211!5m2!1spl!2spl" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
 </section>
 
+<section class="about">
+  <h2>O nas</h2>
+  <p>
+    Firma Relax z siedzibą w Tomaszowie Lubelskim zajmuje się produkcją skarpet już od 1992 roku.<br>
+    W przeciągu kilkudziesięciu lat wypracowaliśmy wizerunek solidnej, sprawdzonej firmy wychodzącej naprzeciw oczekiwaniom klientów i panującym trendom.<br>
+    Dzięki profesjonalnemu parkowi maszynowemu stosujemy bogatą kolorystykę oraz wzornictwo.<br>
+    Wysokiej jakości surowce z których produkowane są nasze wyroby nadają im cenioną przez klienta trwałość oraz estetykę.<br>
+    Posiadamy atrakcyjne ceny zarówno dla klientów indywidualnych, sklepów oraz hurtowni.<br><br>
+    Serdecznie zapraszamy do współpracy.
+  </p>
+</section>
+
 <footer>
   <div class="footer-container">
     <div class="footer-section">
       <h3>Szybki kontakt</h3>
       <p>☎ Telefon: +48 604 868 085</p>
-      <p>✉ E-mail: relaxskarpety@interia.pl</p>
+      <p id="email" style="cursor:pointer;">✉ E-mail: relaxskarpety@interia.pl</p>
     </div>
     <div class="footer-section">
       <h3>Godziny otwarcia</h3>
@@ -233,6 +304,19 @@ carouselSection.addEventListener('mouseenter', stopAuto);
 carouselSection.addEventListener('mouseleave', startAuto);
 
 startAuto();
+</script>
+
+<script>
+const emailElement = document.getElementById('email');
+
+emailElement.addEventListener('click', () => {
+  const email = "relaxskarpety@interia.pl";
+  navigator.clipboard.writeText(email).then(() => {
+    alert("Adres e-mail skopiowany do schowka!");
+  }).catch(err => {
+    console.error("Nie udało się skopiować:", err);
+  });
+});
 </script>
 
 </body>
