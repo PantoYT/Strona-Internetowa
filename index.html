@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>RelaxSkarpety</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;700&display=swap" rel="stylesheet">
+<link href="https://fonts.cdnfonts.com/css/brush-445" rel="stylesheet">
+
+<style>
+body { margin: 0; font-family: 'Poppins', sans-serif; text-align: center; background: #fafafa; }
+header { height: 225px; background: #222; color: white; display: flex; flex-direction: column; justify-content: center; align-items: center; font-family: 'Brush 445', cursive; }
+header h1 { font-size: 100px; margin:0; }
+header p { font-family: 'Poppins', sans-serif; font-weight: 700; font-size: 24px; color: #ccc; margin:0; }
+
+.carousel { padding: 40px 0 70px 0; overflow: hidden; display: flex; justify-content: center; position: relative; }
+.carousel-track-container { width: 90%; height: 350px; overflow: visible; }
+.carousel-track { display: flex; transition: transform .6s cubic-bezier(0.65, 0, 0.35, 1); list-style: none; padding: 0; margin: 0; gap: 10px; }
+.carousel-slide { flex: 0 0 20%; box-sizing: border-box; height: 100%; }
+.carousel-slide img { width: 100%; height: 350px; aspect-ratio: 16/10; object-fit: cover; display: block; margin: 0 auto; border-radius: 12px; box-shadow: 0 2px 12px rgba(0,0,0,0.1); }
+
+.carousel-btn { position: absolute; top: 50%; transform: translateY(-50%); background: #222; color: white; border: none; width: 50px; height: 50px; font-size: 30px; cursor: pointer; border-radius: 50%; z-index: 20; opacity: 0.85; display: flex; align-items: center; justify-content: center; transition: background 0.2s, opacity 0.2s; }
+.carousel-btn:hover { background: #444; opacity: 1; }
+.carousel-btn.prev { left: 20px; }
+.carousel-btn.next { right: 20px; }
+
+.socials { padding: 40px 0 0 0; display: flex; justify-content: center; gap: 50px; }
+.socials a img { transition: transform 0.2s; }
+.socials a:hover img { transform: scale(1.1); }
+
+.map { width: 100%; height: 700px; margin: 0; padding: 20px; box-sizing: border-box; display: flex; flex-direction: column; align-items: flex-start; justify-content: flex-start; }
+.map h2 { font-weight: 700; font-size: 28px; color: #fff; background-color: #222; display: inline-block; padding: 10px 20px; border-radius: 5px; margin-bottom: 15px; }
+.map iframe { width: 100%; height: calc(100% - 65px); border: 0; }
+
+footer { background: #222; color: #fff; padding: 40px 20px; font-size: 14px; }
+.footer-container { display: flex; flex-wrap: wrap; justify-content: space-around; gap: 40px; max-width: 1000px; margin: 0 auto; text-align: left; }
+.footer-section h3 { font-size: 18px; margin-bottom: 10px; }
+.footer-section p { margin: 2px 0; }
+.footer-section p.italic { font-style: italic; color: #bbb; }
+
+.carousel::before,
+.carousel::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  width: 170px;
+  height: 100%;
+  z-index: 10;
+  pointer-events: none;
+}
+
+.carousel::before {
+  left: 0px;
+  background: linear-gradient(to right, #fafafa 40%, transparent);
+}
+
+.carousel::after {
+  right: 0px;
+  background: linear-gradient(to left, #fafafa 40%, transparent);
+}
+
+</style>
+</head>
+<body>
+
+<header>
+  <h1>Relax</h1>
+  <p>• Producent Skarpet i Rajstop •</p>
+</header>
+
+<section class="carousel">
+  <button class="carousel-btn prev">❮</button>
+  <div class="carousel-track-container">
+    <ul class="carousel-track">
+      <li class="carousel-slide"><img src="images/img1.jpg" alt=""></li>
+      <li class="carousel-slide"><img src="images/img2.jpg" alt=""></li>
+      <li class="carousel-slide"><img src="images/img3.jpg" alt=""></li>
+      <li class="carousel-slide"><img src="images/img4.jpg" alt=""></li>
+      <li class="carousel-slide"><img src="images/img5.jpg" alt=""></li>
+      <li class="carousel-slide"><img src="images/img6.jpg" alt=""></li>
+      <li class="carousel-slide"><img src="images/img7.jpg" alt=""></li>
+      <li class="carousel-slide"><img src="images/img8.jpg" alt=""></li>
+      <li class="carousel-slide"><img src="images/img9.jpg" alt=""></li>
+      <li class="carousel-slide"><img src="images/img10.jpg" alt=""></li>
+    </ul>
+  </div>
+  <button class="carousel-btn next">❯</button>
+</section>
+
+<section class="socials">
+  <a href="https://www.facebook.com/RelaxSkarpety?locale=pl_PL"><img src="icons/facebook.svg" alt="Facebook" width="90"></a>
+  <a href="https://www.instagram.com/relax.skarpety/"><img src="icons/instagram.svg" alt="Instagram" width="90"></a>
+</section>
+
+<section class="map">
+  <h2>Gdzie nas znaleźć?</h2>
+  <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d635.1364904721734!2d23.420009128585807!3d50.449557298217066!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x4724a627021b38a1%3A0xcf8136404e17eef4!2srelax%20skarpety!5e0!3m2!1spl!2spl!4v1756070618211!5m2!1spl!2spl" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+</section>
+
+<footer>
+  <div class="footer-container">
+    <div class="footer-section">
+      <h3>Szybki kontakt</h3>
+      <p>☎ Telefon: +48 604 868 085</p>
+      <p>✉ E-mail: relaxskarpety@interia.pl</p>
+    </div>
+    <div class="footer-section">
+      <h3>Godziny otwarcia</h3>
+      <p>Poniedziałek - piątek: 09:00 - 17:00</p>
+      <p>Sobota: 09:00 - 14:00</p>
+    </div>
+  </div>
+  <p>© 2025 RelaxSkarpety. Wszelkie prawa zastrzeżone.</p>
+</footer>
+
+<script>
+const track = document.querySelector('.carousel-track');
+const prevButton = document.querySelector('.prev');
+const nextButton = document.querySelector('.next');
+const carouselSection = document.querySelector('.carousel');
+
+const slides = Array.from(track.children);
+
+function getSlideWidth() {
+  const style = getComputedStyle(slides[0]);
+  return slides[0].getBoundingClientRect().width 
+    + parseFloat(style.marginLeft) 
+    + parseFloat(style.marginRight);
+}
+
+let isMoving = false;
+
+function moveNext() {
+  if (isMoving) return;
+  isMoving = true;
+  const slideWidth = getSlideWidth();
+
+  track.style.transition = 'transform 0.6s cubic-bezier(0.65,0,0.35,1)';
+  track.style.transform = `translateX(-${slideWidth}px)`;
+
+  track.addEventListener('transitionend', () => {
+    track.appendChild(track.firstElementChild);
+    track.style.transition = 'none';
+    track.style.transform = 'translateX(0)';
+    isMoving = false;
+  }, { once: true });
+}
+
+function movePrev() {
+  if (isMoving) return;
+  isMoving = true;
+  const slideWidth = getSlideWidth();
+
+  track.insertBefore(track.lastElementChild, track.firstElementChild);
+  track.style.transition = 'none';
+  track.style.transform = `translateX(-${slideWidth}px)`;
+
+  requestAnimationFrame(() => {
+    track.style.transition = 'transform 0.6s cubic-bezier(0.65,0,0.35,1)';
+    track.style.transform = 'translateX(0)';
+  });
+
+  track.addEventListener('transitionend', () => { isMoving = false; }, { once: true });
+}
+
+let autoInterval;
+function startAuto() { clearInterval(autoInterval); autoInterval = setInterval(moveNext, 3000); }
+function stopAuto() { clearInterval(autoInterval); }
+
+nextButton.addEventListener('click', () => { moveNext(); startAuto(); });
+prevButton.addEventListener('click', () => { movePrev(); startAuto(); });
+
+carouselSection.addEventListener('mouseenter', stopAuto);
+carouselSection.addEventListener('mouseleave', startAuto);
+
+startAuto();
+</script>
+
+</body>
+</html>
